@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+html,body{
+    font-family:  'Raleway', sans-serif;
+    height: 100%;
+    position: relative;
+}
+
+.brand{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+a:hover{
+text-decoration: none !important;
+}
+
+.logo{
+    max-height: 50px;
+}
+
+.logo-text{
+    margin-left: 15px;
+    position: relative;
+    font-size: 1.2rem;
+    color:#3F3F3F;
+    top:4px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.no-text-decoration{
+    text-decoration: none !important;
+}
+.form-control:focus {
+    border-color: #989b95;
+    box-shadow: none;
+}
+
+.btn-primary{
+    background: linear-gradient(46.28deg,#95ac81 ,#69884D);
+    border: none !important;
+}
+
+a:focus, a:active, .btn-primary:focus, .btn-primary:active{
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
+button:focus{
+    outline: none !important;
+}
+
+.navbar{
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.09);
+}
+
+.navbar-toggler{
+    font-size: 12px;
+}
+
+.nav-link{
+    letter-spacing: 2px;
+    font-size: 0.7rem;
+    color: #3F3F3F !important;
+}
+
+@media(min-width:576px){
+    .nav-link{
+        padding-left: 1rem !important;
+    }
+}
+
+.main-container{
+    min-height: 100vh; /* will cover the 100% of viewport */
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 100px; /* height of your footer */
+}
+
+.home-content{
+    padding-top:40px;
+    
+}
+
+.page-title{
+    font-weight: 300;
+}
+
+.service-title{
+    font-weight: 600;
+}
+
+.services-card{
+    box-shadow: 0 5px 15px #dcdada, 0 2px 3px #dcdada;
+    border-radius: 10px;
+}
+
+.footer{
+    background: #69884D;
+    background:  linear-gradient(46.28deg,#69884D,#95ac81 );
+    color: white;
+   padding: 10px;
+   
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  
+}
+
+
+.footer-text{
+    color: white !important;
+    letter-spacing: 4px;
+    margin: 0px;
+    font-size: 0.7rem;
+
+}
+
+.social-icon{
+    height: 18px !important; 
+    width: 18px !important;
+}
+
+.social-icon:hover{
+ color:#69884D !important;
+}
+.service-card-description{
+    max-height: 144px;
+    overflow: hidden;
+}
+
+a, p{
+    color:#989b95;
+}
+
+a:hover{
+    color:#69884D;
+}
+
+h5{
+    color:#989b95;
+    font-size: 1rem;
+}
