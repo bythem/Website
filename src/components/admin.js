@@ -46,6 +46,26 @@ class Admin extends Component {
                         </Link>
                     </div>
                     <div className="col-md-6 mb-3">
+                        <Link className="no-text-decoration" to="/editproject">
+                            <div className="card services-card h-100">
+                                <div className="card-body">
+                                    <h5 className="card-title service-title"> Edit / Delete Project  </h5>
+                                    <p className="card-text service-card-description text-justify"> You can edit or delete a particular project. </p>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="col-md-6 mb-3">
+                        <Link className="no-text-decoration" to="/addprojectimages">
+                            <div className="card services-card h-100">
+                                <div className="card-body">
+                                    <h5 className="card-title service-title"> Add Project Images  </h5>
+                                    <p className="card-text service-card-description text-justify"> Add Images to a particular project. </p>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="col-md-6 mb-3">
                         <Link className="no-text-decoration" to="/webimages">
                             <div className="card services-card h-100">
                                 <div className="card-body">

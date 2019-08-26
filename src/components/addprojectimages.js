@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { db, fbStorage } from '../firebase';
 import FileUploader from "react-firebase-file-uploader";
 
-class AddProject extends Component {
+class AddProjectImages extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,7 +15,7 @@ class AddProject extends Component {
 }
   componentDidMount = () => {
     /** BIND SERVICES DROPDOWN WITH AVAILABLE SERVICE */
-    const s_ref = db.ref("/services");
+    const s_ref = db.ref("/projects");
     s_ref.once("value", snapshot => {
       if (snapshot) {
         this.setState({ slist: snapshot })
@@ -23,16 +23,13 @@ class AddProject extends Component {
     })
   }
 
-  handleComplete = (p_name, p_description, p_service, p_image) => {
-    const projectID = db.ref("/projects").push();
+  handleComplete = (p_name, p_image) => {
+    const projectID = db.ref("/projectimages").push();
     projectID
       .set(
         {
           project_name: p_name,
-          project_description: p_description,
-          project_service: p_service,
-          project_image:p_image,
-          project_pagename: p_name.toString().toLowerCase().replace(/\s/g, '-'), //lowercase and no space will be helpful for URLs
+          project_image: p_image,
           project_created_at: Date.now()
         },
         function (error) {
@@ -67,40 +64,31 @@ class AddProject extends Component {
         <div className="container page-content">
           <div className="row">
             <div className="col-12">
-              <h2>Add New Project</h2>
+              <h2>Add New Project Image</h2>
             </div>
             <div className="col-12">
-              <div className="form-group">
-                <input type="text" className="form-control" value={this.state.p_name} id="p_name" placeholder="Enter Project Name" 
-                  onChange={this.updateState} />
-
-              </div>
-              <div className="form-group">
-                <textarea type="text" className="form-control" value={this.state.p_description} id="p_description" placeholder="Describe the Project" 
-                  onChange={this.updateState} />
-              </div>
-
-              <div className="form-group">
-                <input type="text" className="form-control" value={this.state.p_image} id="p_image" placeholder="Project Cover Image url " 
-                  onChange={this.updateState} />
-              </div>
-
+              
               <div className="form-group">
 
-                <select className="form-control" value={this.state.p_service} id="p_service"
+                <select className="form-control" value={this.state.p_name} id="p_name"
                   onChange={this.updateState}>
                   {this.state.slist &&
                     Object.keys(this.state.slist.val()).map(id => {
                       let s = this.state.slist.val();
                       return (
-                        <option value={s[id]["service_name"]}>{s[id]["service_name"]}</option>
+                        <option value={s[id]["project_name"]}>{s[id]["project_name"]}</option>
                       )
                     })
                   }
                 </select>
               </div>
 
-              <button onClick={() => this.handleComplete(this.state.p_name, this.state.p_description, this.state.p_service, this.state.p_image)} className="btn btn-primary">Submit</button>
+              <div className="form-group">
+                <input type="text" className="form-control" value={this.state.p_image} id="p_image" placeholder="Project Image url " 
+                  onChange={this.updateState} />
+              </div>
+
+              <button onClick={() => this.handleComplete(this.state.p_name, this.state.p_image)} className="btn btn-primary">SUBMIT</button>
 
             </div>
             <div className="col-12 mt-5">
@@ -134,4 +122,4 @@ class AddProject extends Component {
   }
 };
 
-export default AddProject;
+export default AddProjectImages;

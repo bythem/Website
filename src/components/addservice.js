@@ -29,7 +29,7 @@ class AddService extends Component {
            {
              service_name: s_name,
              service_description: s_description,
-             service_pagename: s_name.toString().toLowerCase().replace(" ", "-"),
+             service_pagename: s_name.toString().toLowerCase().replace(/\s/g, '-'),
              service_created_at: Date.now(),
              service_image: s_image
            },
@@ -45,9 +45,6 @@ class AddService extends Component {
          
         
       }
-
-      handleChangeUsername = event =>
-        this.setState({ username: event.target.value });
 
       handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
 

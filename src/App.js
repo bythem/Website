@@ -15,9 +15,12 @@ import AddProject from "./components/addproject";
 import EditService from "./components/editservice";
 import Portfolio from "./components/portfolio";
 import Contact from "./components/contact";
+import EditProject from "./components/editproject";
+import ProjectImages from "./components/addprojectimages";
 import { fbAuth } from "./firebase";
 import { connect } from "react-redux";
 import { UPDATE_USER, SIGN_OUT } from "./js/actions/index"
+import AddProjectImages from './components/addprojectimages';
 
 
 const mapStateToProps = state => {
@@ -81,9 +84,11 @@ class App extends Component {
             <Route exact path="/services" render={(props) => <Services {...props} isAuthed={this.state.currentUser} />} />
             <Route path="/index" component={IndexPage} />
             <PrivateRoute exact path="/addservice" component={AddService} authenticated={this.props.authenticated} />
+            <PrivateRoute exact path="/addprojectimages" component={AddProjectImages} authenticated={this.props.authenticated} />
             <PrivateRoute exact path="/addproject" component={AddProject} authenticated={this.props.authenticated} />
             <PrivateRoute exact path="/them-admin" component={Admin} authenticated={this.props.authenticated} />
             <PrivateRoute exact path="/editservice" component={EditService} authenticated={this.props.authenticated} />
+            <PrivateRoute exact path="/editproject" component={EditProject} authenticated={this.props.authenticated} />
             <Redirect from="/" exact to="/index" component={IndexPage} />
             <Route path="/webimages" component={WebImages} />
             <Redirect to="/not-found" />
