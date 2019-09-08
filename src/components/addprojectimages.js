@@ -14,16 +14,17 @@ class AddProjectImages extends Component {
     this.setState({ [e.target.id] : e.target.value  })
 }
   componentDidMount = () => {
-    /** BIND SERVICES DROPDOWN WITH AVAILABLE SERVICE */
-    const s_ref = db.ref("/projects");
-    s_ref.once("value", snapshot => {
+    /** BIND PROJECTS DROPDOWN WITH AVAILABLE SERVICE */
+    const p_ref = db.ref("/projects");
+    p_ref.once("value", snapshot => {
       if (snapshot) {
-        this.setState({ slist: snapshot })
+        this.setState({ plist: snapshot })
       }
     })
   }
 
   handleComplete = (p_name, p_image) => {
+    console.log(p_name);
     const projectID = db.ref("/projectimages").push();
     projectID
       .set(
@@ -72,11 +73,12 @@ class AddProjectImages extends Component {
 
                 <select className="form-control" value={this.state.p_name} id="p_name"
                   onChange={this.updateState}>
-                  {this.state.slist &&
-                    Object.keys(this.state.slist.val()).map(id => {
-                      let s = this.state.slist.val();
+                     <option value="empty">SELECT A PROJECT</option>
+                  {this.state.plist &&
+                    Object.keys(this.state.plist.val()).map(id => {
+                      let p = this.state.plist.val();
                       return (
-                        <option value={s[id]["project_name"]}>{s[id]["project_name"]}</option>
+                        <option value={p[id]["project_name"]}>{p[id]["project_name"]}</option>
                       )
                     })
                   }
