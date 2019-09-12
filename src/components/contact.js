@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-
 class Contact extends Component {
 
   render() {
@@ -18,6 +17,10 @@ class Contact extends Component {
                 <br />
                 <a href="mailto:maneesh@bythem.studio?subject=THEM ENQUIRY">maneesh@bythem.studio</a></p>
             </div>
+
+            <div className="col-12">
+              <Googlemap/>
+            </div>
           </div>
         </div>
 
@@ -25,5 +28,41 @@ class Contact extends Component {
     );
   }
 };
+
+const { compose, withProps, withStateHandlers } = require("recompose");
+const {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+} = require("react-google-maps");
+const demoFancyMapStyles = require("./googlemapstyle.json");
+
+const Googlemap = compose(
+  withProps({
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy7GTXR3u5zjyD3wFPbN7YAMlIs3t82Gk&v=3.exp&libraries=geometry,drawing,places",
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{ height: `400px` }} />,
+    mapElement: <div style={{ height: `100%` }} />,
+    center: { lat: 25.03, lng: 121.6 },
+  }),
+  withStateHandlers(() => ({
+    isOpen: false,
+  }), {
+    onToggleOpen: ({ isOpen }) => () => ({
+      isOpen: !isOpen,
+    })
+  }),
+  withScriptjs,
+  withGoogleMap
+)(props =>
+  <GoogleMap
+    defaultZoom={5}
+    defaultCenter={props.center}
+    defaultOptions={{ styles: demoFancyMapStyles, mapTypeControl: false }}
+  >
+  
+  </GoogleMap>
+);
+
 
 export default Contact;

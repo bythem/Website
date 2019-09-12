@@ -33,17 +33,23 @@ class Portfolio extends Component {
             <div className="col-12 mb-4">
               <h2 className="page-title">PORTFOLIO</h2>
             </div>
-            {this.state.slist &&
+            {this.state.plist &&
               Object.keys(this.state.plist.val()).map(id => {
                 let p = this.state.plist.val();
                 return (
                   <div className="col-md-6 col-lg-4 mb-3">
                     <Link className="no-text-decoration" to={{ pathname: `projects/${p[id]["project_pagename"]}`, projectid: `${id}` }}>
-                        <img src="https://amycarman.com/files/amycarman3/cache/5d082b60a6c5d482a8bfa1113dd351f6.jpg" className="img img-fluid" />
-                        <div className="card-body">
-                          <h5 className="card-title project-title"> {p[id]["project_name"]}</h5>
-                          <p className="card-text project-card-description text-justify"> {p[id]["project_description"]}</p>
-                        </div>
+
+                      <div className="portfolio-project-card">
+                      <img src="https://amycarman.com/files/amycarman3/cache/5d082b60a6c5d482a8bfa1113dd351f6.jpg" className="img img-fluid portfolio-project-image" />
+                      <div className="portfolio-project-short-description">
+                          <div className="description">
+                          <h5 className="description-title"> {p[id]["project_name"]}</h5>
+                          <p className="description-text"> {p[id]["project_description"]}</p>
+                          </div>
+                      </div>
+                      </div>
+
                       </Link>
                   </div>
                 )

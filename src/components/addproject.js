@@ -89,6 +89,7 @@ class AddProject extends Component {
 
                 <select className="form-control" value={this.state.p_service} id="p_service"
                   onChange={this.updateState}>
+                     <option value="empty">SELECT A SERVICE</option>
                   {this.state.slist &&
                     Object.keys(this.state.slist.val()).map(id => {
                       let s = this.state.slist.val();
