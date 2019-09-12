@@ -43,7 +43,9 @@ class Portfolio extends Component {
                       <div className="portfolio-project-card">
                       <img src="https://amycarman.com/files/amycarman3/cache/5d082b60a6c5d482a8bfa1113dd351f6.jpg" className="img img-fluid portfolio-project-image" />
                       <div className="portfolio-project-short-description">
+                      <div className="project-border-top"></div>
                           <div className="description">
+                            
                           <h5 className="description-title"> {p[id]["project_name"]}</h5>
                           <p className="description-text"> {p[id]["project_description"]}</p>
                           </div>

@@ -133,7 +133,7 @@ button:focus{
     overflow: hidden;
 }
 .services-image{
-    border-radius:10px 10px 0 0;
+    border-radius:10px 10px 0 0 ;
 }
 
 
@@ -144,7 +144,24 @@ button:focus{
 }
 
 .portfolio-project-card:hover .portfolio-project-short-description .description{
+    transform: none;
+    background: #fff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, .1);
+}
+.portfolio-project-card:hover .portfolio-project-short-description .description .description-title{
     opacity: 1;
+    transition: .1s;
+}
+
+
+.portfolio-project-card:hover .portfolio-project-short-description .description .description-text{
+    opacity: 1;
+    transition: .1s;
+}
+
+.portfolio-project-card:hover .portfolio-project-short-description .project-border-top{
+    opacity: 1;
+    transition: .2s;
 }
 
 .portfolio-project-image{
@@ -169,12 +186,27 @@ button:focus{
 .portfolio-project-short-description .description{
     padding: 15px;
     display: block;
-    transition: opacity 0.2s ease;
+    transition: 0.2s ease;
     transform: translateY(10px);
     border-radius: 0 0 10px 10px;
-    background-color: white;
+}
+
+.portfolio-project-short-description .project-border-top{
+    opacity: 0;
+    height: 3px;
+    width: 100%;
+    background: #69884D;
+    background:  linear-gradient(46.28deg,#69884D,#95ac81 );
+}
+
+.portfolio-project-short-description .description .description-title{
     opacity: 0;
 }
+
+.portfolio-project-short-description .description .description-text{
+    opacity: 0;
+}
+
 a, p{
     color:#989b95;
 }
@@ -187,6 +219,5 @@ h5{
     color:#989b95;
     font-size: 1rem;
 }
-
 
 

@@ -34,6 +34,7 @@ const {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
+  Marker
 } = require("react-google-maps");
 const demoFancyMapStyles = require("./googlemapstyle.json");
 
@@ -56,11 +57,11 @@ const Googlemap = compose(
   withGoogleMap
 )(props =>
   <GoogleMap
-    defaultZoom={5}
-    defaultCenter={props.center}
+    defaultZoom={19}
+    defaultCenter={{ lat: 17.362209, lng: 78.548439 }}
     defaultOptions={{ styles: demoFancyMapStyles, mapTypeControl: false }}
   >
-  
+   <Marker position={{ lat: 17.362209, lng: 78.548439 }} />
   </GoogleMap>
 );
 
