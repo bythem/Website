@@ -43,11 +43,13 @@ class Services extends Component {
                   {this.state.slist &&
                      Object.keys(this.state.slist.val()).map(id => {
                         let s = this.state.slist.val();
+                        let imgurl = s[id]["service_image"];
                         return (
                            <div className="col-md-6 col-lg-4 mb-3">
                               <Link className="no-text-decoration" to={{ pathname: `services/${s[id]["service_pagename"]}`, serviceid: `${id}` }}>
                                  <div className="card services-card h-100">
-                                    <img src="https://amycarman.com/files/amycarman3/cache/5d082b60a6c5d482a8bfa1113dd351f6.jpg" className="img img-fluid services-image" />
+                                    
+                                    <div className="services-image" style={{backgroundImage:`url(${imgurl})`}}></div>
                                     <div className="card-body">
                                        <h5 className="card-title service-title"> {s[id]["service_name"]}</h5>
                                        <p className="card-text service-card-description text-justify"> {s[id]["service_description"]}</p>

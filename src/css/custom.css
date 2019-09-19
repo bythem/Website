@@ -134,6 +134,13 @@ button:focus{
 }
 .services-image{
     border-radius:10px 10px 0 0 ;
+    min-height: 270px;
+    max-height: 270px;
+    background-position: center;
+}
+
+.sdetail-description{
+    line-height: 1.8;
 }
 
 
@@ -201,6 +208,8 @@ button:focus{
 
 .portfolio-project-short-description .description .description-title{
     opacity: 0;
+    font-weight: bold;
+    font-size: 1.1rem;
 }
 
 .portfolio-project-short-description .description .description-text{

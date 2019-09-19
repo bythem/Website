@@ -44,10 +44,10 @@ class Portfolio extends Component {
                       <img src="https://amycarman.com/files/amycarman3/cache/5d082b60a6c5d482a8bfa1113dd351f6.jpg" className="img img-fluid portfolio-project-image" />
                       <div className="portfolio-project-short-description">
                       <div className="project-border-top"></div>
-                          <div className="description">
+                          <div className="description text-center">
                             
-                          <h5 className="description-title"> {p[id]["project_name"]}</h5>
-                          <p className="description-text"> {p[id]["project_description"]}</p>
+                          <h5 className="description-title mb-0"> {p[id]["project_name"]}</h5>
+                          <small className="description-text"> {p[id]["project_location"]}</small>
                           </div>
                       </div>
                       </div>

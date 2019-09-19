@@ -35,7 +35,7 @@ class EditProject extends Component {
         
      }
 
-     handleComplete = (p_name,p_description, p_image, p_projectid, p_service) => {
+     handleComplete = (p_name,p_description, p_image, p_projectid, p_service,p_location) => {
 
       /* Update the changes made to the service */
       console.log(p_service)
@@ -45,6 +45,7 @@ class EditProject extends Component {
             project_description: p_description,
             project_service: p_service,
             project_image:p_image,
+            project_location:p_location,
             project_pagename: p_name.toString().toLowerCase().replace(/\s/g, '-'), //lowercase and no space will be helpful for URLs
             project_created_at: Date.now()
            },
@@ -91,6 +92,7 @@ class EditProject extends Component {
                       p_name: snapshot.val()["project_name"], 
                       p_description: snapshot.val()["project_description"], 
                       p_image: snapshot.val()["project_image"],
+                      p_location:snapshot.val()["project_location"],
                       p_service: snapshot.val()["project_service"]
                     })
                 }
@@ -156,12 +158,16 @@ class EditProject extends Component {
 
                     <div className="col-12">
                         <div className="form-group">
-                            <input type="text" className="form-control" id="p_name" placeholder="Enter Service Name"
+                            <input type="text" className="form-control" id="p_name" placeholder="Enter Project Name"
                             value={this.state.p_name} onChange={this.updateState} />
                             
                         </div>
                         <div className="form-group">
-                            <textarea type="text" className="form-control" id="p_description" placeholder="Describe the Service" 
+                            <textarea type="text" className="form-control" id="p_location" placeholder="Project Location" 
+                            onChange={this.updateState} value={this.state.p_location}/>
+                        </div>
+                        <div className="form-group">
+                            <textarea type="text" className="form-control" id="p_description" placeholder="Describe the Project" 
                             onChange={this.updateState} value={this.state.p_description}/>
                         </div>
                         <div className="form-group">
@@ -184,7 +190,7 @@ class EditProject extends Component {
                           </select>
                         </div>
                         
-                        <button onClick={() => this.handleComplete(this.state.p_name,this.state.p_description,this.state.p_image,this.state.p_projectid, this.state.p_service )} className="btn btn-primary">Update Project</button>
+                        <button onClick={() => this.handleComplete(this.state.p_name,this.state.p_description,this.state.p_image,this.state.p_projectid, this.state.p_service,this.state.p_location )} className="btn btn-primary">Update Project</button>
 
                     </div>
 

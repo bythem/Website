@@ -23,7 +23,7 @@ class AddProject extends Component {
     })
   }
 
-  handleComplete = (p_name, p_description, p_service, p_image) => {
+  handleComplete = (p_name, p_description, p_service, p_image,p_location) => {
     const projectID = db.ref("/projects").push();
     projectID
       .set(
@@ -32,6 +32,7 @@ class AddProject extends Component {
           project_description: p_description,
           project_service: p_service,
           project_image:p_image,
+          project_location:p_location,
           project_pagename: p_name.toString().toLowerCase().replace(/\s/g, '-'), //lowercase and no space will be helpful for URLs
           project_created_at: Date.now()
         },
@@ -76,6 +77,11 @@ class AddProject extends Component {
 
               </div>
               <div className="form-group">
+                <input type="text" className="form-control" value={this.state.p_location} id="p_location" placeholder="Project Location " 
+                  onChange={this.updateState} />
+              </div>
+
+              <div className="form-group">
                 <textarea type="text" className="form-control" value={this.state.p_description} id="p_description" placeholder="Describe the Project" 
                   onChange={this.updateState} />
               </div>
@@ -84,6 +90,7 @@ class AddProject extends Component {
                 <input type="text" className="form-control" value={this.state.p_image} id="p_image" placeholder="Project Cover Image url " 
                   onChange={this.updateState} />
               </div>
+              
 
               <div className="form-group">
 
@@ -101,7 +108,7 @@ class AddProject extends Component {
                 </select>
               </div>
 
-              <button onClick={() => this.handleComplete(this.state.p_name, this.state.p_description, this.state.p_service, this.state.p_image)} className="btn btn-primary">Submit</button>
+              <button onClick={() => this.handleComplete(this.state.p_name, this.state.p_description, this.state.p_service, this.state.p_image,this.state.p_location)} className="btn btn-primary">Submit</button>
 
             </div>
             <div className="col-12 mt-5">

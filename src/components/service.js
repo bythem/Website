@@ -44,11 +44,11 @@ class Service extends Component {
                 
                 {this.state.servicedetails && 
                 <div className="row">
-                    <div className="col-12">
+                    <div className="col-12 mb-3">
                     <h2 className="sdetail-title">{this.state.servicedetails["service_name"]}</h2>
                     </div>
                     
-                    <div className="col-12">
+                    <div className="col-12 text-justify">
                     <h5 className="sdetail-description">{this.state.servicedetails["service_description"]}</h5>
                     </div>
 
