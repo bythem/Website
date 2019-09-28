@@ -58,7 +58,7 @@ class AddProject extends Component {
 
   handleUploadSuccess = filename => {
     this.setState({ avatar: filename, progress: 100, isUploading: false });
-    fbStorage.ref("images").child(filename).getDownloadURL().then(url => this.setState({ avatarURL: url }));
+    fbStorage.ref("images").child(filename).getDownloadURL().then(url => this.setState({ avatarURL: url, p_image : url }));
   };
 
 
@@ -115,7 +115,9 @@ class AddProject extends Component {
               <h5>Upload images here</h5>
 
               {this.state.isUploading &&
+              
                 <div className="progress-bar" role="progressbar" style={{ width: this.state.progress + '%' }} aria-valuenow={this.state.progress} aria-valuemin="0" aria-valuemax="100">{this.state.progress}</div>
+              
               }
               {this.state.avatarURL &&
                 <div className="uploaded image">

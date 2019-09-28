@@ -163,7 +163,7 @@ class EditProject extends Component {
                             
                         </div>
                         <div className="form-group">
-                            <textarea type="text" className="form-control" id="p_location" placeholder="Project Location" 
+                            <input type="text" className="form-control" id="p_location" placeholder="Project Location" 
                             onChange={this.updateState} value={this.state.p_location}/>
                         </div>
                         <div className="form-group">

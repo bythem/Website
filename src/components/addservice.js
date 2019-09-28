@@ -57,7 +57,7 @@ class AddService extends Component {
 
       handleUploadSuccess = filename => {
         this.setState({ avatar: filename, progress: 100, isUploading: false });
-        fbStorage.ref("images").child(filename).getDownloadURL().then(url => this.setState({ avatarURL: url }));
+        fbStorage.ref("images").child(filename).getDownloadURL().then(url => this.setState({ avatarURL: url, s_image : url }));
       };
 
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Italianno|Raleway&display=swap');
 
 html,body{
     font-family:  'Raleway', sans-serif;
@@ -17,6 +17,10 @@ text-decoration: none !important;
 
 .logo{
     max-height: 50px;
+}
+.quote{
+    font-family: 'Italianno', cursive;
+    padding-bottom: 40px;
 }
 
 .logo-text{
@@ -67,10 +71,22 @@ button:focus{
     color: #3F3F3F !important;
 }
 
+
+
 @media(min-width:576px){
     .nav-link{
         padding-left: 1rem !important;
     }
+}
+
+@media(max-width:700px){
+    .quote{
+        font-size: 1.7rem;
+    }
+    .homepage-images-div{
+        padding:0px !important;
+    }
+
 }
 
 .main-container{
@@ -84,6 +100,36 @@ button:focus{
 .home-content{
     padding-top:40px;
     
+}
+
+.homepage-images-div{
+    background-color: #EFEFEF;
+    min-height: 400px;
+    padding:30px;
+}
+
+.homepage-images-left{
+   background-size: cover;
+   background-position: center;
+    height:400px;
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/bythem-f0fdb.appspot.com/o/images%2Fcbffc746-c00f-4a14-86c3-1cea8da42591.jpg?alt=media&token=11588099-fcf2-4915-b178-b4df7fc66753)
+}
+.homepage-images-center{
+    background-size: cover;
+    background-position: center;
+    height:400px;
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/bythem-f0fdb.appspot.com/o/images%2F99c0eb4f-5825-47a6-af2c-dc169a9d6ca1.jpg?alt=media&token=a69de162-3f91-4fe7-9927-1bd52391a44a)
+}
+.homepage-images-right{
+    background-size: cover;
+    background-position: center;
+    height:400px;
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/bythem-f0fdb.appspot.com/o/images%2F66cb8eb7-fb12-45fc-87ff-7aa59b8a7c96.jpg?alt=media&token=32653437-ae1c-4703-a599-b3f3c71c3a5b)
+}
+
+
+.homepage-about-title{
+    letter-spacing: 5px;
 }
 
 .page-title{

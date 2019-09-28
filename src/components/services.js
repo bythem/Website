@@ -35,7 +35,7 @@ class Services extends Component {
    render() {
       return (
          <React.Fragment>
-            <div className="page-content">
+            <div className="page-content container">
                <div className="row">
                   <div className="col-12 mb-4">
                      <h2 className="page-title">SERVICES</h2>
@@ -45,7 +45,7 @@ class Services extends Component {
                         let s = this.state.slist.val();
                         let imgurl = s[id]["service_image"];
                         return (
-                           <div className="col-md-6 col-lg-4 mb-3">
+                           <div className="col-md-6 col-lg-4 mb-4">
                               <Link className="no-text-decoration" to={{ pathname: `services/${s[id]["service_pagename"]}`, serviceid: `${id}` }}>
                                  <div className="card services-card h-100">
                                     

@@ -21,7 +21,7 @@ import { fbAuth } from "./firebase";
 import { connect } from "react-redux";
 import { UPDATE_USER, SIGN_OUT } from "./js/actions/index"
 import AddProjectImages from './components/addprojectimages';
-
+import Sitemap from './components/sitemap';
 
 const mapStateToProps = state => {
   return state;
@@ -75,7 +75,7 @@ class App extends Component {
     return (
       <div className="main-container">
         <NavBar />
-        <main className="container home-content">
+        <main className=" home-content">
           <Switch>
             <Route path="/them-login" component={Login} />
             <Route path="/services/:servicename" component={Service} />
@@ -83,6 +83,7 @@ class App extends Component {
             <Route path="/contact" component={Contact} />
             <Route exact path="/services" render={(props) => <Services {...props} isAuthed={this.state.currentUser} />} />
             <Route path="/index" component={IndexPage} />
+            <Route path="/sitemap" component={Sitemap} />
             <PrivateRoute exact path="/addservice" component={AddService} authenticated={this.props.authenticated} />
             <PrivateRoute exact path="/addprojectimages" component={AddProjectImages} authenticated={this.props.authenticated} />
             <PrivateRoute exact path="/addproject" component={AddProject} authenticated={this.props.authenticated} />
@@ -98,13 +99,23 @@ class App extends Component {
         {this.props.authenticated &&
           <div className="container mt-5">
             <div className="row">
-              <div className="col-md-6 mb-3">
-                {this.props.currentUser} <Link className="btn btn-primary mx-4" to="/them-admin" >GO HOME</Link>
+              <div className="col-12">
+            <div className="card">
+              <div className="card-header">
+              {this.props.currentUser}
               </div>
-              <div className="col-md-6 mb-3">
-                <input type="button" className="btn btn-danger mx-4" value="SIGN OUT" onClick={() => this.handleSignOut()} />
+              <div className="card-body">
+               <div className="row">
+                 <div className="col-6">
+                 <Link className="btn btn-primary mx-4" to="/them-admin" >GO HOME</Link>
+                 </div>
+               </div>
+              </div>
+              <div className="card-footer text-muted " style={{background:"transparent"}}>
+              <input type="button" className="btn btn-danger mx-4" value="SIGN OUT" onClick={() => this.handleSignOut()} />
               </div>
             </div>
+            </div></div>
           </div>
         }
         <Footer />
