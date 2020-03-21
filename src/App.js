@@ -48,7 +48,7 @@ class App extends Component {
     }
   };
 
-  componentWillMount() {
+  componentDidMount() {
     fbAuth.onAuthStateChanged(user => {
       if (user) {
         this.props.UPDATE_USER(user);

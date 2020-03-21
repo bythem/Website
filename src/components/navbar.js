@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <nav className=" navbar navbar-expand-sm navbar-light ">
+    <nav className=" navbar navbar-expand-sm navbar-light fixed-top">
       <div className="container">
         <Link className="brand" to="/">
          <img src="https://firebasestorage.googleapis.com/v0/b/bythem-f0fdb.appspot.com/o/images%2F3e570b10-e4b8-4fbf-9d96-35b100382cf4.png?alt=media&token=f291a73b-4002-4682-a723-ce8d272e43c2"

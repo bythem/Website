@@ -59,6 +59,7 @@ button:focus{
 
 .navbar{
     box-shadow: 0 2px 10px 0 rgba(0,0,0,0.09);
+    background-color: white;
 }
 
 .navbar-toggler{
@@ -98,7 +99,7 @@ button:focus{
 }
 
 .home-content{
-    padding-top:40px;
+    padding-top:100px;
     
 }
 
