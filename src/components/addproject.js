@@ -101,7 +101,7 @@ class AddProject extends Component {
                     Object.keys(this.state.slist.val()).map(id => {
                       let s = this.state.slist.val();
                       return (
-                        <option value={s[id]["service_name"]}>{s[id]["service_name"]}</option>
+                        <option value={id} key={id}>{s[id]["service_name"]}</option>
                       )
                     })
                   }

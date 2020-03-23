@@ -13,7 +13,7 @@ class Portfolio extends Component {
 
   componentWillMount = () => {
     document.title = "THEM - Portfolio"; // SET PAGE TITLE
-    // GET ALL SERVICES FROM FIREBASE REAL TIME DATABASE
+    // GET ALL PROJECTS FROM FIREBASE REAL TIME DATABASE
     const p_ref = db.ref("/projects");
     p_ref.once("value", snapshot => {
       if (snapshot) {
@@ -33,15 +33,15 @@ class Portfolio extends Component {
             <div className="col-12 mb-4">
               <h2 className="page-title">PORTFOLIO</h2>
             </div>
-            {this.state.plist &&
+            {this.state.plist ?
               Object.keys(this.state.plist.val()).map(id => {
                 let p = this.state.plist.val();
                 return (
-                  <div className="col-md-6 col-lg-4 mb-3">
-                    <Link className="no-text-decoration" to={{ pathname: `projects/${p[id]["project_pagename"]}`, projectid: `${id}` }}>
+                  <div key={id} className="col-md-6 col-lg-4 mb-3">
+                    <Link className="no-text-decoration" to={{ pathname: `project/${p[id]["project_pagename"]}`, projectid: `${id}` }}>
 
-                      <div className="portfolio-project-card">
-                      <img src="https://amycarman.com/files/amycarman3/cache/5d082b60a6c5d482a8bfa1113dd351f6.jpg" className="img img-fluid portfolio-project-image" />
+                      <div className="portfolio-project-card" style={{backgroundImage:`url(${p[id]["project_image"]})`}}>
+                      {/* <img src={p[id]["project_image"]} className="img img-fluid portfolio-project-image" /> */}
                       <div className="portfolio-project-short-description">
                       <div className="project-border-top"></div>
                           <div className="description text-center">
@@ -55,8 +55,8 @@ class Portfolio extends Component {
                       </Link>
                   </div>
                 )
-              })
-            }
+              }) : null
+            } 
           </div>
         </div>
 

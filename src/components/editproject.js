@@ -36,9 +36,8 @@ class EditProject extends Component {
      }
 
      handleComplete = (p_name,p_description, p_image, p_projectid, p_service,p_location) => {
-
+      
       /* Update the changes made to the service */
-      console.log(p_service)
       db.ref("/projects/"+p_projectid).update(
            {
             project_name: p_name,
@@ -84,7 +83,7 @@ class EditProject extends Component {
       projectSelected = (e) => {
         if(e.target.value !== "empty")
         {
-          this.setState({_projectid: e.target.value})
+          this.setState({p_projectid: e.target.value})
           const s_ref = db.ref("/projects/"+e.target.value);
             s_ref.once("value", snapshot => {
                 if (snapshot) {
@@ -146,7 +145,7 @@ class EditProject extends Component {
                         Object.keys(this.state.plist.val()).map(id => {
                           let p = this.state.plist.val();
                           return (
-                            <option value={id}>{p[id]["project_name"]}</option>
+                            <option key={id} value={id}>{p[id]["project_name"]}</option>
                           )
                         })
                       }
@@ -183,7 +182,7 @@ class EditProject extends Component {
                               Object.keys(this.state.slist.val()).map(id => {
                                 let s = this.state.slist.val();
                                 return (
-                                  <option value={s[id]["service_name"]}>{s[id]["service_name"]}</option>
+                                  <option key={id} value={id}>{s[id]["service_name"]}</option>
                                 )
                               })
                             }

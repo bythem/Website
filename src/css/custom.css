@@ -176,7 +176,7 @@ button:focus{
  color:#69884D !important;
 }
 .service-card-description{
-    max-height: 144px;
+    max-height: 100px;
     overflow: hidden;
 }
 .services-image{
@@ -195,6 +195,9 @@ button:focus{
     position: relative;  
     box-shadow: 0 5px 15px #dcdada, 0 2px 3px #dcdada;
     border-radius: 10px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
 }
 
 .portfolio-project-card:hover .portfolio-project-short-description .description{

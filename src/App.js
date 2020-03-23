@@ -16,7 +16,7 @@ import EditService from "./components/editservice";
 import Portfolio from "./components/portfolio";
 import Contact from "./components/contact";
 import EditProject from "./components/editproject";
-import ProjectImages from "./components/addprojectimages";
+import Project from "./components/project";
 import { fbAuth } from "./firebase";
 import { connect } from "react-redux";
 import { UPDATE_USER, SIGN_OUT } from "./js/actions/index"
@@ -79,6 +79,7 @@ class App extends Component {
           <Switch>
             <Route path="/them-login" component={Login} />
             <Route path="/services/:servicename" component={Service} />
+            <Route path="/project/:projectname" component={Project} />
             <Route path="/portfolio" component={Portfolio} />
             <Route path="/contact" component={Contact} />
             <Route exact path="/services" render={(props) => <Services {...props} isAuthed={this.state.currentUser} />} />

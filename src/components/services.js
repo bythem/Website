@@ -40,12 +40,12 @@ class Services extends Component {
                   <div className="col-12 mb-4">
                      <h2 className="page-title">SERVICES</h2>
                   </div>
-                  {this.state.slist &&
+                  {this.state.slist ?
                      Object.keys(this.state.slist.val()).map(id => {
                         let s = this.state.slist.val();
                         let imgurl = s[id]["service_image"];
                         return (
-                           <div className="col-md-6 col-lg-4 mb-4">
+                           <div key={id} className="col-md-6 col-lg-4 mb-4">
                               <Link className="no-text-decoration" to={{ pathname: `services/${s[id]["service_pagename"]}`, serviceid: `${id}` }}>
                                  <div className="card services-card h-100">
                                     
@@ -57,7 +57,7 @@ class Services extends Component {
                                  </div></Link>
                            </div>
                         )
-                     })
+                     }) : null
                   }
                </div>
             </div>
@@ -68,3 +68,6 @@ class Services extends Component {
 };
 
 export default connect(mapStateToProps, null)(Services);
+
+
+
