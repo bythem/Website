@@ -1,9 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {Component} from "react";
+import { Link, NavLink } from "react-router-dom";
+import { HamburgerCollapseReverse } from 'react-animated-burgers'
+
+class NavBar extends Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+        showNav: false
+      }
+   }
+
+   componentDidMount = () =>{
+
+   }
+  showHamburgerMenu = (status) => {
+    
+    this.setState({showNav: status});
+  }
 
 
-const NavBar = () => {
+  render(){
   return (
+    <React.Fragment>
     <nav className=" navbar navbar-expand-sm navbar-light fixed-top">
       <div className="container">
         <Link className="brand" to="/">
@@ -13,51 +31,48 @@ const NavBar = () => {
           ></img>
          <h1 className="logo-text">THEM STUDIOS</h1>
         </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
+        
+         
+         <HamburgerCollapseReverse
+         className="navbar-toggler"
+          buttonWidth={25}
+          isActive={this.state.showNav} 
+          onClick={() => this.showHamburgerMenu(!this.state.showNav)} />
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className={this.state.showNav ? 'navbar-collapse collapse show': 'navbar-collapse collapse'}  id="navbarSupportedContent">
+          
           <ul className="navbar-nav ml-auto">
             <li className="nav-item ">
-              <Link className="nav-link" to="/">
+              <NavLink className="nav-link" onClick={() => this.showHamburgerMenu(false)} activeClassName="nav-link-selected"  to="/">
                 <b>A</b>
                 BOUT
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/services">
+              <NavLink className="nav-link" onClick={() => this.showHamburgerMenu(false)} activeClassName="nav-link-selected"  to="/services">
                 <b>S</b>
                 ERVICES
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/portfolio">
+              <NavLink className="nav-link" onClick={() => this.showHamburgerMenu(false)} activeClassName="nav-link-selected"  to="/portfolio">
                 <b>P</b>
                 ORTFOLIO
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item ">
-              <Link className="nav-link" to="/contact">
+              <NavLink className="nav-link" onClick={() => this.showHamburgerMenu(false)} activeClassName="nav-link-selected"  to="/contact">
                 <b>C</b>
                 ONTACT
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+    </React.Fragment>
 
-
-   );
+   );}
 };
 
 export default NavBar;

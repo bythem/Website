@@ -64,6 +64,7 @@ button:focus{
 
 .navbar-toggler{
     font-size: 12px;
+    border: none !important;
 }
 
 .nav-link{
@@ -113,19 +114,19 @@ button:focus{
    background-size: cover;
    background-position: center;
     height:400px;
-    background-image: url(https://firebasestorage.googleapis.com/v0/b/bythem-f0fdb.appspot.com/o/images%2Fcbffc746-c00f-4a14-86c3-1cea8da42591.jpg?alt=media&token=11588099-fcf2-4915-b178-b4df7fc66753)
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/bythem-f0fdb.appspot.com/o/images%2Ff294141a-6963-4de7-94e8-f2cd21ed267c.jpg?alt=media&token=2d6b306d-c106-4e1d-b363-5965c9faf640)
 }
 .homepage-images-center{
     background-size: cover;
     background-position: center;
     height:400px;
-    background-image: url(https://firebasestorage.googleapis.com/v0/b/bythem-f0fdb.appspot.com/o/images%2F99c0eb4f-5825-47a6-af2c-dc169a9d6ca1.jpg?alt=media&token=a69de162-3f91-4fe7-9927-1bd52391a44a)
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/bythem-f0fdb.appspot.com/o/images%2F14a76468-760f-4fd3-8211-4973f72db80a.jpg?alt=media&token=f8e6436f-818e-4455-b236-80c244f037f1)
 }
 .homepage-images-right{
     background-size: cover;
     background-position: center;
     height:400px;
-    background-image: url(https://firebasestorage.googleapis.com/v0/b/bythem-f0fdb.appspot.com/o/images%2F66cb8eb7-fb12-45fc-87ff-7aa59b8a7c96.jpg?alt=media&token=32653437-ae1c-4703-a599-b3f3c71c3a5b)
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/bythem-f0fdb.appspot.com/o/images%2F2a98a1a0-1799-404b-b474-23c3f73e7024.jpg?alt=media&token=b5b2ccb8-4ded-4e59-a317-2cf0d5daebf8)
 }
 
 
@@ -184,6 +185,7 @@ button:focus{
     min-height: 270px;
     max-height: 270px;
     background-position: center;
+    background-size: cover;
 }
 
 .sdetail-description{
