@@ -7,7 +7,7 @@
     "firebase": "^6.4.0",
     "grommet-icons": "^4.3.0",
     "hamburger-react": "^1.0.6",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "popper.js": "^1.14.3",
     "react": "^16.9.0",
     "react-animated-burgers": "^1.2.7",
