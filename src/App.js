@@ -17,13 +17,14 @@ import Portfolio from "./components/portfolio";
 import Contact from "./components/contact";
 import EditProject from "./components/editproject";
 import Project from "./components/project";
-
+import FeedBack from "./components/feedback";
 import { fbAuth } from "./firebase";
 import { connect } from "react-redux";
 import { UPDATE_USER, SIGN_OUT } from "./js/actions/index";
 import AddProjectImages from "./components/addprojectimages";
 import Sitemap from "./components/sitemap";
 import ScrollToTop from "./components/scrolltotop";
+import feedback from "./components/feedback";
 
 const mapStateToProps = (state) => {
   return state;
@@ -88,6 +89,7 @@ class App extends Component {
             <Route path="services/project/:projectname" component={Project} />
             <Route path="/portfolio" component={Portfolio} />
             <Route path="/contact" component={Contact} />
+            <Route path="/feedback/:feedbackid" component={feedback} />
             <Route
               exact
               path="/services"
