@@ -15,49 +15,43 @@ class Portfolio extends Component {
     document.title = "THEM - Portfolio"; // SET PAGE TITLE
     // GET ALL PROJECTS FROM FIREBASE REAL TIME DATABASE
 
-    if (this.props.title) {
-      if (this.props.serviceKey)
-        this.getProjectsByService(this.props.serviceKey);
+    if (!this.props.title) {
+      this.getProjects();
     } else {
-      const p_ref = db.ref("/projects");
-      p_ref.once("value", (snapshot) => {
-        if (snapshot) {
-          this.setState({ plist: snapshot });
-          this.forceUpdate();
-        }
-      });
+      this.getProjectsByService(this.props.serviceProjects);
     }
   };
 
-  shouldComponentUpdate = (nextProps, nextState) => {
-    if (this.props.serviceKey !== nextProps.serviceKey) {
-      if (nextProps.serviceKey)
-        setTimeout(() => {
-          this.getProjectsByService(nextProps.serviceKey);
-        }, 250);
-      return true;
-    }
-    return false;
+  getProjects = () => {
+    const p_ref = db.ref("/projects");
+    p_ref.orderByChild("active").once("value", (snapshot) => {
+      if (snapshot.val()) {
+        this.setState({ plist: snapshot.val() });
+        this.forceUpdate();
+      }
+    });
   };
 
-  getProjectsByService = (serviceId) => {
-    let projectimagesRef = db.ref("/projects");
-    let count = 0;
-    projectimagesRef
-      .orderByChild("project_service")
-      .equalTo(serviceId)
-      .once("value", (snapshot) => {
-        if (snapshot.val()) {
-          count = Object.keys(snapshot.val()).length;
-          this.setState({
-            plist: snapshot,
-            projectscount: count,
-          });
-          this.forceUpdate();
-        } else {
-          this.setState({ plist: null, projectscount: count });
-        }
-      });
+  // shouldComponentUpdate = (nextProps, nextState) => {
+  //   if (this.props.serviceKey !== nextProps.serviceKey) {
+  //     this.getProjectsByService(this.props.serviceProjects);
+  //     this.forceUpdate();
+  //     return true;
+  //   }
+  //   return false;
+  // };
+
+  getProjectsByService = (serviceProjects) => {
+    const p_ref = db.ref("/projects");
+    p_ref.orderByChild("active").once("value", (snapshot) => {
+      if (snapshot.val()) {
+        this.setState({
+          plist: snapshot.val(),
+          serviceProjects: serviceProjects,
+        });
+        this.forceUpdate();
+      }
+    });
   };
 
   render() {
@@ -73,46 +67,81 @@ class Portfolio extends Component {
                   ) : (
                     <h2 className="page-title">PORTFOLIO</h2>
                   )}
-
-                  {this.state.serviceId}
                 </div>
 
-                {Object.keys(this.state.plist.val()).map((id) => {
-                  let p = this.state.plist.val();
-                  return (
-                    <div key={id} className="col-md-6 col-lg-4 mb-3">
-                      <Link
-                        className="no-text-decoration"
-                        to={{
-                          pathname: `/project/${p[id]["project_pagename"]}`,
-                          projectid: `${id}`,
-                        }}
-                      >
-                        <div
-                          className="portfolio-project-card"
-                          style={{
-                            backgroundImage: `url(${p[id]["project_image"]})`,
-                          }}
-                        >
-                          {/* <img src={p[id]["project_image"]} className="img img-fluid portfolio-project-image" /> */}
-                          <div className="portfolio-project-short-description">
-                            <div className="project-border-top"></div>
-                            <div className="description text-center">
-                              <h5 className="description-title mb-0">
-                                {" "}
-                                {p[id]["project_name"]}
-                              </h5>
-                              <small className="description-text">
-                                {" "}
-                                {p[id]["project_location"]}
-                              </small>
+                {this.state.serviceProjects && this.state.plist
+                  ? this.state.serviceProjects.map((id) => {
+                      let p = this.state.plist;
+                      return (
+                        <div key={id} className="col-md-6 col-lg-4 mb-3">
+                          <Link
+                            className="no-text-decoration"
+                            to={{
+                              pathname: `/project/${p[id]["project_pagename"]}`,
+                              projectid: `${id}`,
+                            }}
+                          >
+                            <div
+                              className="portfolio-project-card"
+                              style={{
+                                backgroundImage: `url(${p[id]["project_image"]})`,
+                              }}
+                            >
+                              {/* <img src={p[id]["project_image"]} className="img img-fluid portfolio-project-image" /> */}
+                              <div className="portfolio-project-short-description">
+                                <div className="project-border-top"></div>
+                                <div className="description text-center">
+                                  <h5 className="description-title mb-0">
+                                    {" "}
+                                    {p[id]["project_name"]}
+                                  </h5>
+                                  <small className="description-text">
+                                    {" "}
+                                    {p[id]["project_location"]}
+                                  </small>
+                                </div>
+                              </div>
                             </div>
-                          </div>
+                          </Link>
                         </div>
-                      </Link>
-                    </div>
-                  );
-                })}
+                      );
+                    })
+                  : Object.keys(this.state.plist).map((id) => {
+                      let p = this.state.plist;
+                      return (
+                        <div key={id} className="col-md-6 col-lg-4 mb-3">
+                          <Link
+                            className="no-text-decoration"
+                            to={{
+                              pathname: `/project/${p[id]["project_pagename"]}`,
+                              projectid: `${id}`,
+                            }}
+                          >
+                            <div
+                              className="portfolio-project-card"
+                              style={{
+                                backgroundImage: `url(${p[id]["project_image"]})`,
+                              }}
+                            >
+                              {/* <img src={p[id]["project_image"]} className="img img-fluid portfolio-project-image" /> */}
+                              <div className="portfolio-project-short-description">
+                                <div className="project-border-top"></div>
+                                <div className="description text-center">
+                                  <h5 className="description-title mb-0">
+                                    {" "}
+                                    {p[id]["project_name"]}
+                                  </h5>
+                                  <small className="description-text">
+                                    {" "}
+                                    {p[id]["project_location"]}
+                                  </small>
+                                </div>
+                              </div>
+                            </div>
+                          </Link>
+                        </div>
+                      );
+                    })}
               </>
             ) : null}
           </div>

@@ -54,10 +54,15 @@ class Service extends Component {
           ) : null}
         </div>
 
-        <Portfolio
-          title="Related Projects"
-          serviceKey={this.state.serviceKey}
-        />
+        {this.state.servicedetails ? (
+          this.state.servicedetails.service_projects ? (
+            <Portfolio
+              title="Related Projects"
+              serviceKey={this.state.serviceKey}
+              serviceProjects={this.state.servicedetails.service_projects}
+            />
+          ) : null
+        ) : null}
       </React.Fragment>
     );
   }

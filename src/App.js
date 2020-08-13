@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Redirect, Switch, Link } from "react-router-dom";
+import { bindActionCreators } from "redux";
 import "./App.css";
 import IndexPage from "./components/index";
 import Services from "./components/services";
@@ -17,28 +18,41 @@ import Portfolio from "./components/portfolio";
 import Contact from "./components/contact";
 import EditProject from "./components/editproject";
 import Project from "./components/project";
-
+import Emails from "./components/emails";
+import EmailDetails from "./components/emaildetails";
+import CreateReviewLinks from "./components/createReviewLink";
 import { fbAuth } from "./firebase";
 import { connect } from "react-redux";
 import { UPDATE_USER, SIGN_OUT } from "./js/actions/index";
 import AddProjectImages from "./components/addprojectimages";
 import Sitemap from "./components/sitemap";
 import ScrollToTop from "./components/scrolltotop";
+import PageContents from "./components/pagecontents";
+import { Home, Mail, Power, User } from "grommet-icons";
+import {
+  getUserDetails,
+  getUserDetailsPending,
+  getUserDetailsError,
+} from "./js/reducers/handleuserReducer";
+import About from "./components/about";
+import fetchUserDetails from "./js/actioncreators/getUserDetails";
 
-const mapStateToProps = (state) => {
-  return state;
-};
+const mapStateToProps = (state) => ({
+  userDetailsError: getUserDetailsError(state),
+  userDetails: getUserDetails(state),
+  userDetailsPending: getUserDetailsPending(state),
+  useractivity: state.useractivity,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    UPDATE_USER: (user) => {
-      dispatch(UPDATE_USER(user));
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      fetchUserDetails: fetchUserDetails,
+      UPDATE_USER: UPDATE_USER,
+      SIGN_OUT: SIGN_OUT,
     },
-    SIGN_OUT: () => {
-      dispatch(SIGN_OUT());
-    },
-  };
-};
+    dispatch
+  );
 
 class App extends Component {
   constructor() {
@@ -83,6 +97,7 @@ class App extends Component {
           <ScrollToTop />
           <Switch>
             <Route path="/them-login" component={Login} />
+            <Route path="/about-them" component={About} />
             <Route path="/services/:servicename" component={Service} />
             <Route path="/project/:projectname" component={Project} />
             <Route path="services/project/:projectname" component={Project} />
@@ -101,37 +116,67 @@ class App extends Component {
               exact
               path="/addservice"
               component={AddService}
-              authenticated={this.props.authenticated}
+              authenticated={this.props.useractivity.authenticated}
             />
             <PrivateRoute
               exact
               path="/addprojectimages"
               component={AddProjectImages}
-              authenticated={this.props.authenticated}
+              authenticated={this.props.useractivity.authenticated}
             />
             <PrivateRoute
               exact
               path="/addproject"
               component={AddProject}
-              authenticated={this.props.authenticated}
+              authenticated={this.props.useractivity.authenticated}
             />
             <PrivateRoute
               exact
               path="/them-admin"
               component={Admin}
-              authenticated={this.props.authenticated}
+              authenticated={this.props.useractivity.authenticated}
             />
             <PrivateRoute
               exact
               path="/editservice"
               component={EditService}
-              authenticated={this.props.authenticated}
+              authenticated={this.props.useractivity.authenticated}
+            />
+            <PrivateRoute
+              exact
+              path="/emails"
+              component={Emails}
+              authenticated={this.props.useractivity.authenticated}
             />
             <PrivateRoute
               exact
               path="/editproject"
               component={EditProject}
-              authenticated={this.props.authenticated}
+              authenticated={this.props.useractivity.authenticated}
+            />
+            <PrivateRoute
+              exact
+              path="/pagecontents"
+              component={PageContents}
+              authenticated={this.props.useractivity.authenticated}
+            />
+            <PrivateRoute
+              exact
+              path="/pagecontents/:contentid"
+              component={PageContents}
+              authenticated={this.props.useractivity.authenticated}
+            />
+            <PrivateRoute
+              exact
+              path="/createreviewlinks"
+              component={CreateReviewLinks}
+              authenticated={this.props.useractivity.authenticated}
+            />
+            <PrivateRoute
+              exact
+              path="/email/:email"
+              component={EmailDetails}
+              authenticated={this.props.useractivity.authenticated}
             />
             <Redirect from="/" exact to="/index" component={IndexPage} />
             <Route path="/webimages" component={WebImages} />
@@ -139,33 +184,41 @@ class App extends Component {
           </Switch>
         </main>
 
-        {this.props.authenticated && (
+        {this.props.useractivity.authenticated && (
           <div className="container mt-5">
-            <div className="row">
-              <div className="col-12">
-                <div className="card">
-                  <div className="card-header">{this.props.currentUser}</div>
-                  <div className="card-body">
-                    <div className="row">
-                      <div className="col-6">
-                        <Link className="btn btn-primary mx-4" to="/them-admin">
-                          GO HOME
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className="card-footer text-muted "
-                    style={{ background: "transparent" }}
-                  >
-                    <input
-                      type="button"
-                      className="btn btn-danger mx-4"
-                      value="SIGN OUT"
+            <div className="d-flex flex-row">
+              <div
+                className="d-flex flex-column"
+                style={{
+                  padding: "25px",
+                }}
+              >
+                <ul className="list-group list-group-horizontal-md">
+                  <li className="list-group-item">
+                    <Link to="/them-admin" className="align-self-center">
+                      <User className="mr-3" color="black"></User>
+                      {this.props.useractivity.currentUser}
+                    </Link>
+                  </li>
+                  <li className="list-group-item">
+                    <Link className="align-self-center" to="/them-admin">
+                      <Home className="mr-3" color="black"></Home>HOME
+                    </Link>
+                  </li>
+                  <li className="list-group-item">
+                    <Link className="" to="/emails">
+                      <Mail className="mr-3" color="black"></Mail>EMAILS
+                    </Link>
+                  </li>
+                  <li className="list-group-item bg-danger ">
+                    <a
+                      className="text-white"
                       onClick={() => this.handleSignOut()}
-                    />
-                  </div>
-                </div>
+                    >
+                      <Power className="mr-3" color="white"></Power>SIGN OUT
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

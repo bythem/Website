@@ -73,6 +73,10 @@ button:focus{
     color: #3F3F3F !important;
 }
 
+.nav-link-selected{
+    color:#69884D !important;
+}
+
 
 
 @media(min-width:576px){
@@ -192,6 +196,13 @@ button:focus{
     line-height: 1.8;
 }
 
+.pagecontent-card{
+    position: relative;  
+    box-shadow: 0 5px 15px #dcdada, 0 2px 3px #dcdada;
+    border-radius: 10px;
+    padding:20px;
+}
+
 
 .portfolio-project-card{
     position: relative;  
@@ -282,3 +293,7 @@ h5{
 }
 
 
+.badge-tags{
+    padding: 10px;
+    background-color: #3F3F3F !important;
+}

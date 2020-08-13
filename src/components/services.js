@@ -35,6 +35,14 @@ class Services extends Component {
           <div className="row">
             <div className="col-12 mb-4">
               <h2 className="page-title">SERVICES</h2>
+              <h5 className="sdetail-description text-justify">
+                At <b>Them</b>, we translate our/your vision into reality. The
+                projects of our studios are fulfilled considering your taste and
+                our designs with latest designs. We provide you an album of
+                visualizations which are both functional and aesthetic. With
+                this approach, you receive an everlasting experience of living
+                in your space and we receive imense satisfaction.
+              </h5>
             </div>
             {this.state.slist
               ? Object.keys(this.state.slist.val()).map((id) => {
