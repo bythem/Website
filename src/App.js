@@ -18,20 +18,16 @@ import Portfolio from "./components/portfolio";
 import Contact from "./components/contact";
 import EditProject from "./components/editproject";
 import Project from "./components/project";
-<<<<<<< HEAD
 import Emails from "./components/emails";
 import EmailDetails from "./components/emaildetails";
 import CreateReviewLinks from "./components/createReviewLink";
-=======
 import FeedBack from "./components/feedback";
->>>>>>> d4191ce504125c91e59ba45a9dee75c4a25d36d0
 import { fbAuth } from "./firebase";
 import { connect } from "react-redux";
 import { UPDATE_USER, SIGN_OUT } from "./js/actions/index";
 import AddProjectImages from "./components/addprojectimages";
 import Sitemap from "./components/sitemap";
 import ScrollToTop from "./components/scrolltotop";
-<<<<<<< HEAD
 import PageContents from "./components/pagecontents";
 import { Home, Mail, Power, User } from "grommet-icons";
 import {
@@ -41,9 +37,7 @@ import {
 } from "./js/reducers/handleuserReducer";
 import About from "./components/about";
 import fetchUserDetails from "./js/actioncreators/getUserDetails";
-=======
 import feedback from "./components/feedback";
->>>>>>> d4191ce504125c91e59ba45a9dee75c4a25d36d0
 
 const mapStateToProps = (state) => ({
   userDetailsError: getUserDetailsError(state),
@@ -111,7 +105,7 @@ class App extends Component {
             <Route path="services/project/:projectname" component={Project} />
             <Route path="/portfolio" component={Portfolio} />
             <Route path="/contact" component={Contact} />
-            <Route path="/feedback/:feedbackid" component={feedback} />
+            <Route path="/feedback/:feedbackid" component={FeedBack} />
             <Route
               exact
               path="/services"
