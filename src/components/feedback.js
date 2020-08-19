@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useParams } from "react";
-import { Star } from "grommet-icons";
+import { Star, BottomCorner } from "grommet-icons";
+import { ToastProvider, useToasts } from 'react-toast-notifications'
 
-function FeedBack(props) {
+
+
+function FeedBack(props, { content }) {
   // Declare a new state variable, which we'll call "count"  const [count, setCount] = useState(0);
-  const name = "uday";
-  const [count, setCount] = useState(0);
-  const [fid, setFid] = useState("");
-  const [hoverIndex, setHoverIndex] = useState(0);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  //const { addToast } = useToasts()
 
   useEffect(() => {
     let uid = props.match.params.feedbackid;
@@ -18,21 +17,27 @@ function FeedBack(props) {
   const getFeedBackDetails = (id) => {
     return id;
   };
+  const [fid, setFid] = useState("");
 
-  return (
-    <div className="page-content container">
-      <div className="d-flex flex-column">
-        <h2 className="page-title">We would love to hear from you!</h2>
-        <h5 className="sdetail-description text-justify">
-          At <b>Them</b>, we translate our/your vision into reality. The
-          projects of our studios are fulfilled considering your taste and our
-          designs with latest designs. We provide you an album of visualizations
-          which are both functional and aesthetic. With this approach, you
-          receive an everlasting experience of living in your space and we
-          receive imense satisfaction.
-        </h5>
-      </div>
 
+
+  const FormWithToasts = () => {
+    const { addToast } = useToasts()
+
+    const [hoverIndex, setHoverIndex] = useState(0);
+    const [selectedIndex, setSelectedIndex] = useState(0);
+
+    const onSubmit = async value => {
+      //const { error } = await dataPersistenceLayer(value)
+      const error = false
+      if (error) {
+        addToast(error.message, { appearance: 'error' })
+      } else {
+        addToast('Saved Successfully', { appearance: 'success' });
+      }
+    }
+
+    return (
       <div
         className="d-flex flex-column mx-auto"
         style={{
@@ -44,7 +49,7 @@ function FeedBack(props) {
       >
         <h2 className="text-center mb-3 theme-hover form-header">
           Send Feedback
-        </h2>
+    </h2>
         <div className="form-group">
           <label>Email address</label>
           <input
@@ -55,7 +60,7 @@ function FeedBack(props) {
           />
           <small className="form-text text-muted">
             We'll never share your email with anyone else.
-          </small>
+      </small>
         </div>
         <div className="form-group">
           <label>Comments</label>
@@ -88,11 +93,38 @@ function FeedBack(props) {
           </div>
         </div>
 
-        <button type="submit" className="btn btn-primary mt-3">
+        <button type="submit" onClick={onSubmit} className="btn btn-primary mt-3">
           Submit
-        </button>
+    </button>
+
       </div>
+
+    )
+  }
+
+  return (
+
+    <div className="page-content container">
+      <div className="d-flex flex-column">
+        <h2 className="page-title">We would love to hear from you!</h2>
+        <h5 className="sdetail-description text-justify">
+          At <b>Them</b>, we translate our/your vision into reality. The
+          projects of our studios are fulfilled considering your taste and our
+          designs with latest designs. We provide you an album of visualizations
+          which are both functional and aesthetic. With this approach, you
+          receive an everlasting experience of living in your space and we
+          receive imense satisfaction.
+        </h5>
+      </div>
+
+      <ToastProvider
+        autoDismiss
+        autoDismissTimeout={6000}
+        placement="bottom-center">
+        <FormWithToasts />
+      </ToastProvider>
     </div>
+
   );
 }
 export default FeedBack;

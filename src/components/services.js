@@ -41,7 +41,7 @@ class Services extends Component {
                 our designs with latest designs. We provide you an album of
                 visualizations which are both functional and aesthetic. With
                 this approach, you receive an everlasting experience of living
-                in your space and we receive imense satisfaction.
+                in your space and we receive immense satisfaction.
               </h5>
             </div>
             {this.state.slist
