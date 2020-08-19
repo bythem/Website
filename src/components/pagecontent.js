@@ -29,7 +29,7 @@ class PageContent extends Component {
       <React.Fragment>
         {this.state.data ? (
           <>
-            <h3 className="homepage-about-title mb-5">
+            <h3 className="homepage-about-title mb-4">
               {this.state.data.content_title}
             </h3>
 

@@ -21,6 +21,7 @@ import Project from "./components/project";
 import Emails from "./components/emails";
 import EmailDetails from "./components/emaildetails";
 import CreateReviewLinks from "./components/createReviewLink";
+import FeedBacks from "./components/feedbacks";
 import FeedBack from "./components/feedback";
 import { fbAuth } from "./firebase";
 import { connect } from "react-redux";
@@ -29,7 +30,7 @@ import AddProjectImages from "./components/addprojectimages";
 import Sitemap from "./components/sitemap";
 import ScrollToTop from "./components/scrolltotop";
 import PageContents from "./components/pagecontents";
-import { Home, Mail, Power, User } from "grommet-icons";
+import { Home, Mail, Power, User, Star } from "grommet-icons";
 import {
   getUserDetails,
   getUserDetailsPending,
@@ -37,7 +38,8 @@ import {
 } from "./js/reducers/handleuserReducer";
 import About from "./components/about";
 import fetchUserDetails from "./js/actioncreators/getUserDetails";
-import feedback from "./components/feedback";
+import Feedback from "./components/feedback";
+import Feedbacks from "./components/feedbacks";
 
 const mapStateToProps = (state) => ({
   userDetailsError: getUserDetailsError(state),
@@ -177,6 +179,18 @@ class App extends Component {
             />
             <PrivateRoute
               exact
+              path="/feedbacks"
+              component={Feedbacks}
+              authenticated={this.props.useractivity.authenticated}
+            />
+            <PrivateRoute
+              exact
+              path="/feedbacks/:reviewid"
+              component={Feedbacks}
+              authenticated={this.props.useractivity.authenticated}
+            />
+            <PrivateRoute
+              exact
               path="/email/:email"
               component={EmailDetails}
               authenticated={this.props.useractivity.authenticated}
@@ -211,6 +225,11 @@ class App extends Component {
                   <li className="list-group-item">
                     <Link className="" to="/emails">
                       <Mail className="mr-3" color="black"></Mail>EMAILS
+                    </Link>
+                  </li>
+                  <li className="list-group-item">
+                    <Link className="" to="/feedbacks">
+                      <Star className="mr-3" color="gold"></Star>FeedBacks
                     </Link>
                   </li>
                   <li className="list-group-item bg-danger ">

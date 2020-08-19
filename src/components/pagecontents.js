@@ -180,10 +180,13 @@ class PageContent extends Component {
                   let c = this.state.contentlist.val();
                   return (
                     <div key={id} className="col-md-6 mb-3">
-                      <div className="pagecontent-card">
+                      <div className="pagecontent-card  h-100">
                         {/* <img src={p[id]["project_image"]} className="img img-fluid portfolio-project-image" /> */}
-                        <div className="form-group">
-                          <label>{c[id]["content_location"]}</label>
+                        <b>ReferenceID :</b> {id}
+                        <div className="form-group mt-3">
+                          <label>
+                            <b>Location Name:</b> {c[id]["content_location"]}
+                          </label>
                           <input
                             type="text"
                             className="form-control"
@@ -194,7 +197,10 @@ class PageContent extends Component {
                           />
                         </div>
                         <div className="form-group">
-                          <label>{c[id]["content_title"]}</label>
+                          <label>
+                            <b>Title : </b>
+                            {c[id]["content_title"]}
+                          </label>
                           <input
                             type="text"
                             className="form-control"
@@ -205,7 +211,12 @@ class PageContent extends Component {
                           />
                         </div>
                         <div className="form-group">
-                          <label>{c[id]["content_description"]}</label>
+                          <label>
+                            <b>
+                              Description: <br />
+                            </b>{" "}
+                            {c[id]["content_description"]}
+                          </label>
                           <textarea
                             type="text"
                             className="form-control"
@@ -215,7 +226,6 @@ class PageContent extends Component {
                             onChange={this.updateState}
                           />
                         </div>
-
                         <div className="form-group">
                           <label>{c[id]["content_active"]}</label>
                           <select
