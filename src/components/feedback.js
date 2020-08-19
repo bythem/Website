@@ -180,8 +180,8 @@ export default function FeedBack(props) {
       </div>
       {formSubmitted ? (
         <>
-          <div class="card text-center theme font-weight-bold">
-            <div class="card-body">{formSubmittedMessage}</div>
+          <div className="card text-center theme font-weight-bold">
+            <div className="card-body">{formSubmittedMessage}</div>
           </div>
         </>
       ) : (

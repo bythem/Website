@@ -19,7 +19,7 @@ class Feedbacks extends Component {
 
     const cf_ref = db.ref("/feedbacks");
     cf_ref.orderByChild("cusmt").once("value", (snapshot) => {
-      if (snapshot) {
+      if (snapshot.val()) {
         this.setState({ flist: snapshot });
       }
     });
@@ -64,7 +64,7 @@ class Feedbacks extends Component {
             <h2 className="page-title">Customer Feedbacks</h2>
           </div>
           <div className="list-group">
-            {this.state.flist &&
+            {this.state.flist ? (
               Object.keys(this.state.flist.val()).map((id) => {
                 let cf = this.state.flist.val();
                 return (
@@ -117,7 +117,14 @@ class Feedbacks extends Component {
                     </div>
                   </div>
                 );
-              })}
+              })
+            ) : (
+              <div className="card text-center bg-danger font-weight-bold">
+                <div className="card-body text-white">
+                  No Customer Feedbacks yet.
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </React.Fragment>
