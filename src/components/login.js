@@ -38,7 +38,11 @@ class Login extends Component {
 
   render() {
     if (this.props.useractivity.authenticated) {
-      return <Redirect to="/them-admin" />;
+      return this.props.location.redirecturl ? (
+        <Redirect to={this.props.location.redirecturl} />
+      ) : (
+        <Redirect to="/them-admin" />
+      );
     } else {
       return (
         <React.Fragment>

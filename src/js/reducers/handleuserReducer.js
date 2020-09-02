@@ -34,6 +34,8 @@ export default function handleuserReducer(state = initialState, action) {
   }
 }
 
-export const getUserDetails = (state) => state.userDetails;
+export const getUserDetails = (state) => {
+  return state.userdetails;
+};
 export const getUserDetailsPending = (state) => state.pending;
 export const getUserDetailsError = (state) => state.error;

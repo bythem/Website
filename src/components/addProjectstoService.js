@@ -3,7 +3,7 @@ import { db, fbStorage } from "../firebase";
 import Select from "react-select";
 import { Close } from "grommet-icons";
 
-class EditService extends Component {
+class AddProjectsToService extends Component {
   constructor(props) {
     super(props);
 
@@ -164,4 +164,4 @@ class EditService extends Component {
   }
 }
 
-export default EditService;
+export default AddProjectsToService;

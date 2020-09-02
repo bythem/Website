@@ -314,3 +314,10 @@ h5 {
   padding: 10px;
   background-color: #3f3f3f !important;
 }
+
+.profile-page {
+  background: linear-gradient(46.28deg, #fafafa, #fdfdfd);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.09);
+}

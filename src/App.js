@@ -40,6 +40,7 @@ import About from "./components/about";
 import fetchUserDetails from "./js/actioncreators/getUserDetails";
 import Feedback from "./components/feedback";
 import Feedbacks from "./components/feedbacks";
+import UserProfile from "./components/profile";
 
 const mapStateToProps = (state) => ({
   userDetailsError: getUserDetailsError(state),
@@ -72,6 +73,7 @@ class App extends Component {
     fbAuth.onAuthStateChanged((user) => {
       if (user) {
         this.props.UPDATE_USER(user);
+        this.props.fetchUserDetails(user);
       } else {
         this.setState({
           authenticated: false,
@@ -121,6 +123,14 @@ class App extends Component {
               exact
               path="/addservice"
               component={AddService}
+              authenticated={this.props.useractivity.authenticated}
+            />
+            <PrivateRoute
+              exact
+              path="/profile"
+              component={UserProfile}
+              prevPath="/profile"
+              userData={this.props.userDetails.userDetails}
               authenticated={this.props.useractivity.authenticated}
             />
             <PrivateRoute
@@ -212,7 +222,7 @@ class App extends Component {
               >
                 <ul className="list-group list-group-horizontal-md">
                   <li className="list-group-item">
-                    <Link to="/them-admin" className="align-self-center">
+                    <Link to="/profile" className="align-self-center">
                       <User className="mr-3" color="black"></User>
                       {this.props.useractivity.currentUser}
                     </Link>

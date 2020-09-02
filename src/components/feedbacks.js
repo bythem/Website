@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../firebase";
-import { Star } from "grommet-icons";
+import { Star, Update } from "grommet-icons";
 
 class Feedbacks extends Component {
   constructor(props) {
@@ -54,6 +54,13 @@ class Feedbacks extends Component {
     const diffTime = Math.abs(date2 - date1);
 
     return Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  };
+
+  check = (val) => {
+    console.log(val);
+    val.trim().length != 0
+      ? this.setState({ result: "empty" })
+      : this.setState({ result: val });
   };
 
   render() {

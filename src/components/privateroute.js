@@ -9,7 +9,7 @@ export default function PrivateRoute({
   return (
     <Route
       {...rest}
-      render={props =>
+      render={(props) =>
         authenticated === true ? (
           <Component {...props} {...rest} />
         ) : (
