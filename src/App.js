@@ -41,6 +41,7 @@ import fetchUserDetails from "./js/actioncreators/getUserDetails";
 import Feedback from "./components/feedback";
 import Feedbacks from "./components/feedbacks";
 import UserProfile from "./components/profile";
+import FadeIn from "react-fade-in";
 
 const mapStateToProps = (state) => ({
   userDetailsError: getUserDetailsError(state),
@@ -101,6 +102,7 @@ class App extends Component {
         <NavBar />
         <main className=" home-content">
           <ScrollToTop />
+
           <Switch>
             <Route path="/them-login" component={Login} />
             <Route path="/about-them" component={About} />
@@ -210,7 +212,6 @@ class App extends Component {
             <Redirect to="/not-found" />
           </Switch>
         </main>
-
         {this.props.useractivity.authenticated && (
           <div className="container mt-5">
             <div className="d-flex flex-row">

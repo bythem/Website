@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { HamburgerCollapseReverse } from "react-animated-burgers";
+import { Phone } from "grommet-icons";
 
 class NavBar extends Component {
   constructor(props) {

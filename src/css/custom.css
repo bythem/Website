@@ -160,8 +160,18 @@ button:focus {
 }
 
 .services-card {
+  box-shadow: none;
+  border-radius: 0px;
+  transition: box-shadow 0.5s;
+  border: none;
+}
+
+.services-card > .card-body {
+  background-color: #f7f7f7;
+}
+
+.services-card:hover {
   box-shadow: 0 5px 15px #dcdada, 0 2px 3px #dcdada;
-  border-radius: 10px;
 }
 
 .footer {
@@ -195,7 +205,7 @@ button:focus {
   overflow: hidden;
 }
 .services-image {
-  border-radius: 10px 10px 0 0;
+  border-radius: 0px;
   min-height: 270px;
   max-height: 270px;
   background-position: center;
