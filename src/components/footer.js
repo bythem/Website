@@ -9,10 +9,12 @@ const Footer = () => {
         <div className="container">
           <div className="row ">
             <div className="col-6">
-              <Link to="" className="no-text-decoration footer-text">
+              <Link to="" className="ml-2  no-text-decoration footer-text">
                 {" "}
                 THEM STUDIOS
               </Link>
+
+
             </div>
             <div className="col-6 text-right">
               <a href="tel:+917702277247">
@@ -36,6 +38,33 @@ const Footer = () => {
                 <Instagram className="social-icon" color="white"></Instagram>
               </a>
             </div>
+            <div className="col-12 mt-2 d-flex justify-content-center">
+              <Link
+                to="/services"
+                className="mx-2 text-white"
+              >
+                Services
+                  </Link>
+              <>|</>
+              <Link
+                to="/portfolio"
+                className="mx-2 text-white"
+              >
+                View Portfolio
+                  </Link>
+              <>|</>
+              <Link
+                to="/contact"
+                className="mx-2 text-white"
+              >
+                Contact
+                  </Link>
+            </div>
+
+            <div style={{ color: "#d0d0d0" }} className="col-12 mt-2 d-flex justify-content-center">
+              © 2020 THEM STUDIOS. All rights reserved.
+            </div>
+
           </div>
         </div>
       </div>

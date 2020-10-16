@@ -13,7 +13,7 @@ class IndexPage extends Component {
       <FadeIn transitionDuration="1000">
         <div className=" index-page text-center">
           <div className="container">
-            <h1 className="quote my-5">
+            <h1 className="quote mt-3">
               Simple is hard - Martin Charles Scorsese
             </h1>
           </div>
