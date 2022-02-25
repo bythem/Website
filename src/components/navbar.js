@@ -51,7 +51,7 @@ class NavBar extends Component {
                     className="nav-link"
                     onClick={() => this.showHamburgerMenu(false)}
                     activeClassName="nav-link-selected"
-                    to="/index"
+                    to="/home"
                   >
                     <b>H</b>
                     OME

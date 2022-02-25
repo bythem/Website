@@ -36,7 +36,7 @@ class Services extends Component {
           <div className="page-content container">
             <div className="row">
               <div className="col-12 mb-4">
-                <h2 className="page-title">SERVICES</h2>
+                <h2 className="page-title">Services</h2>
                 <h5 className="sdetail-description text-justify">
                   At <b>Them</b>, we translate our/your vision into reality. The
                   projects of our studios are fulfilled considering your taste

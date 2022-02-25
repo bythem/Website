@@ -66,7 +66,7 @@ class Portfolio extends Component {
                     {this.props.title ? (
                       <h3 className="page-title mt-4">{this.props.title}</h3>
                     ) : (
-                      <h2 className="page-title">PORTFOLIO</h2>
+                      <h2 className="page-title">Portfolio</h2>
                     )}
                   </div>
 

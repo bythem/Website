@@ -42,6 +42,7 @@ import Feedback from "./components/feedback";
 import Feedbacks from "./components/feedbacks";
 import UserProfile from "./components/profile";
 import FadeIn from "react-fade-in";
+import { MetaTags } from "react-meta-tags";
 
 const mapStateToProps = (state) => ({
   userDetailsError: getUserDetailsError(state),
@@ -91,14 +92,28 @@ class App extends Component {
       .then(() => {
         this.props.SIGN_OUT();
       })
-      .catch(function (error) {
-        // An error happened.
-      });
+      .catch(function (error) {});
   };
 
   render() {
     return (
       <div className="main-container">
+        <MetaTags>
+          <meta
+            name="description"
+            content="We excel in providing clients with designs with perfect blend in form and function"
+          />
+          <meta property="og:title" content="theM Studios" />
+          <meta
+            property="og:description"
+            content="We excel in providing clients with designs with perfect blend in form and function"
+          />
+          <meta
+            property="og:image"
+            content="https://firebasestorage.googleapis.com/v0/b/bythem-f0fdb.appspot.com/o/images%2F09404e2e-48f9-4914-bdb8-95d89de4baf2.jpg?alt=media&token=36930f52-dfbe-435c-a415-17d305567775"
+          />
+          <meta property="og:type" content="website" />
+        </MetaTags>
         <NavBar />
         <main className=" home-content">
           <ScrollToTop />
@@ -119,7 +134,7 @@ class App extends Component {
                 <Services {...props} isAuthed={this.state.currentUser} />
               )}
             />
-            <Route path="/index" component={IndexPage} />
+            <Route path="/home" component={IndexPage} />
             <Route path="/sitemap" component={Sitemap} />
             <PrivateRoute
               exact
@@ -207,7 +222,7 @@ class App extends Component {
               component={EmailDetails}
               authenticated={this.props.useractivity.authenticated}
             />
-            <Redirect from="/" exact to="/index" component={IndexPage} />
+            <Redirect from="/" exact to="/home" component={IndexPage} />
             <Route path="/webimages" component={WebImages} />
             <Redirect to="/not-found" />
           </Switch>

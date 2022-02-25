@@ -13,8 +13,6 @@ const Footer = () => {
                 {" "}
                 THEM STUDIOS
               </Link>
-
-
             </div>
             <div className="col-6 text-right">
               <a href="tel:+917702277247">
@@ -31,7 +29,7 @@ const Footer = () => {
                 ></LinkedinOption>
               </a>
               <a
-                href="https://www.instagram.com/bythem.studio/"
+                href="https://www.instagram.com/themhyd/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -39,32 +37,25 @@ const Footer = () => {
               </a>
             </div>
             <div className="col-12 mt-2 d-flex justify-content-center">
-              <Link
-                to="/services"
-                className="mx-2 text-white"
-              >
+              <Link to="/services" className="mx-2 text-white">
                 Services
-                  </Link>
+              </Link>
               <>|</>
-              <Link
-                to="/portfolio"
-                className="mx-2 text-white"
-              >
-                View Portfolio
-                  </Link>
+              <Link to="/portfolio" className="mx-2 text-white">
+                Portfolio
+              </Link>
               <>|</>
-              <Link
-                to="/contact"
-                className="mx-2 text-white"
-              >
+              <Link to="/contact" className="mx-2 text-white">
                 Contact
-                  </Link>
+              </Link>
             </div>
 
-            <div style={{ color: "#d0d0d0" }} className="col-12 mt-2 d-flex justify-content-center">
-              © 2020 THEM STUDIOS. All rights reserved.
+            <div
+              style={{ color: "#d0d0d0" }}
+              className="col-12 mt-2 d-flex justify-content-center"
+            >
+              © {new Date().getFullYear()} THEM STUDIOS. All rights reserved.
             </div>
-
           </div>
         </div>
       </div>

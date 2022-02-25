@@ -13,9 +13,6 @@ class About extends Component {
       <FadeIn transitionDuration="1000">
         <div className=" index-page text-center">
           <div className="container">
-
-
-
             <div className="d-flex flex-column flex-md-row justify-content-center mt-5">
               <div className="mb-2">
                 <PageContent pagecontentid="-MDIt4KlYbfKpBOh36ua" />
@@ -46,30 +43,20 @@ class About extends Component {
                   <h5>Founder & Principal Designer</h5>
                 </div>
                 <div className="d-flex justify-content-start">
-                  <Link
-                    to="/services"
-                    className="mx-2"
-                  >
+                  <Link to="/services" className="mx-2">
                     Services
                   </Link>
                   <>|</>
-                  <Link
-                    to="/portfolio"
-                    className="mx-2"
-                  >
-                    View Portfolio
+                  <Link to="/portfolio" className="mx-2">
+                    Portfolio
                   </Link>
                   <>|</>
-                  <Link
-                    to="/contact"
-                    className="mx-2"
-                  >
+                  <Link to="/contact" className="mx-2">
                     Contact
                   </Link>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </FadeIn>
